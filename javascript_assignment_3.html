@@ -1,0 +1,38 @@
+<html>
+  <body>
+    <h3>View Answer in Console</h3>
+    <script>
+      const people = [
+        "Alice Anderson",
+        "Aaron Adams",
+        "Bella Brown",
+        "Brian Black",
+        "Cathy Carter",
+        "Charles Cooper",
+        "Diana Davis",
+        "Daniel Drake",
+        "Ella Evans",
+        "Ethan Edwards",
+        "Fiona Fisher",
+        "Frank Foster",
+        "Grace Green",
+        "Gavin Gray",
+        "Hannah Harris",
+        "Henry Hill",
+        "Isabella Ingram",
+        "Ian Irving",
+        "Jack Johnson",
+        "Julia James",
+      ];
+
+      const startingLetter = "B";
+
+      const result = people.filter((name) => {
+        return name.charAt(0) === startingLetter;
+      });
+
+      console.log(`Names starting with '${startingLetter}':`);
+      console.log(result);
+    </script>
+  </body>
+</html>
