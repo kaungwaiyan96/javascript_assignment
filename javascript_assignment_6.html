@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<head>
+  <title>Monster Detail</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: left;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+    label {
+      font-weight: bold;
+      font-size: 18px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    select {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      background-color: white;
+    }
+    select:focus {
+      outline: none;
+      border-color: #4a90e2;
+    }
+    hr {
+      margin: 30px 0;
+      border: none;
+      border-top: 1px solid #ddd;
+    }
+    .monster-info {
+      font-size: 20px;
+      line-height: 2;
+    }
+    .monster-info div {
+      margin-bottom: 10px;
+    }
+    .label {
+      font-weight: bold;
+      display: inline-block;
+      width: 80px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+ 
+<div class="container">
+  <h1>Monster Detail</h1>
+ 
+  <label for="monsterSelect">Select Monster:</label>
+  <select id="monsterSelect">
+    <option value="">-</option>
+    <!-- Default option -->
+  </select>
+ 
+  <hr>
+ 
+  <div id="monsterDetails" class="monster-info">
+    <!-- Monster data will be inserted here -->
+  </div>
+</div>
+ 
+<script>
+      // Monster list as array of JSON objects
+      const monsters = [
+        { "id": 1, "name": "Fire Dragon", "hp": 150, "exp": 85 },
+        { "id": 2, "name": "Ice Wolf", "hp": 75, "exp": 45 },
+        { "id": 3, "name": "Shadow Goblin", "hp": 40, "exp": 25 },
+        { "id": 4, "name": "Lightning Phoenix", "hp": 200, "exp": 120 },
+        { "id": 5, "name": "Earth Golem", "hp": 180, "exp": 95 },
+        { "id": 6, "name": "Poison Spider", "hp": 60, "exp": 35 },
+        { "id": 7, "name": "Wind Eagle", "hp": 90, "exp": 55 },
+        { "id": 8, "name": "Dark Skeleton", "hp": 65, "exp": 40 },
+        { "id": 9, "name": "Crystal Unicorn", "hp": 120, "exp": 75 },
+        { "id": 10, "name": "Lava Titan", "hp": 250, "exp": 150 },
+      ];
+ 
+
+const select = document.getElementById('monsterSelect');
+const detailsDiv = document.getElementById('monsterDetails');
+ 
+
+monsters.forEach(monster => {
+  const option = document.createElement('option');
+  option.value = monster.id;          
+  option.textContent = monster.name;  
+  select.appendChild(option);
+});
+ 
+select.addEventListener('change', function() {
+  const selectedId = this.value;
+  
+  if (selectedId === "") {
+    detailsDiv.innerHTML = "";
+    return;
+  }
+  
+  const monster = monsters.find(m => m.id == selectedId);
+ 
+  if (monster) {
+    detailsDiv.innerHTML = `
+      <div><span class="label">ID</span>     ${monster.id}</div>
+      <div><span class="label">Name</span>   ${monster.name}</div>
+      <div><span class="label">HP</span>     ${monster.hp}</div>
+      <div><span class="label">EXP</span>    ${monster.exp}</div>
+    `;
+  }
+});
+</script>
+ 
+</body>
+</html>
